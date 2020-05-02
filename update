@@ -1,0 +1,51 @@
+#!/bin/bash
+# 20181117
+# First script for updating Vault VM
+
+echo "------------------------------------------------------------------------"
+echo "Updating Debian..."
+echo "------------------------------------------------------------------------"
+sudo apt-get update
+echo "------------------------------------------------------------------------"
+echo "Upgrading Debian..."
+echo "------------------------------------------------------------------------"
+sudo apt-get upgrade
+echo "------------------------------------------------------------------------"
+echo "Running autoclean..."
+echo "------------------------------------------------------------------------"
+sudo apt-get autoclean
+echo "------------------------------------------------------------------------"
+echo "Updating mlocate..."
+echo "------------------------------------------------------------------------"
+sudo updatedb
+echo "------------------------------------------------------------------------"
+echo "Remember to check logs!"
+echo "------------------------------------------------------------------------"
+read -p "Check logs? (y/n)"
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  #20200319 - Checks logs for maintenance
+  echo "------------------------------------------------------------------------"
+  echo "Checking Unattended Updates log..."
+  echo "------------------------------------------------------------------------"
+  sudo tail -n 5 /var/log/dpkg.log
+  echo "------------------------------------------------------------------------"
+  echo "Checking if fail2ban is running..."
+  echo "------------------------------------------------------------------------"
+  sudo fail2ban-client status
+  echo "------------------------------------------------------------------------"
+  echo "Checking ufw status..."
+  echo "------------------------------------------------------------------------"
+  sudo ufw status
+  #20200319 - (1)Added testing disk access speed
+  echo "------------------------------------------------------------------------"
+  echo "Testing disk access speed..."
+  echo "------------------------------------------------------------------------"
+  sudo hdparm -tT /dev/sda1
+  sudo hdparm -tT /dev/sdb1
+  sudo hdparm -tT /dev/sdc1
+  sudo hdparm -tT /dev/sdd1
+  sudo hdparm -tT /dev/sde1
+  #(1)https://www.debian.org/doc/manuals/debian-reference/ch09.en.html
+fi
