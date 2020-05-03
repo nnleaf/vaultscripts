@@ -48,4 +48,14 @@ then
   sudo hdparm -tT /dev/sdd1
   sudo hdparm -tT /dev/sde1
   #(1)https://www.debian.org/doc/manuals/debian-reference/ch09.en.html
+  echo "------------------------------------------------------------------------"
+  read -p "Run rkhunter scan? (y/n)"
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+    echo "------------------------------------------------------------------------"
+    echo "Running rkhunter scan..."
+    echo "------------------------------------------------------------------------"
+    sudo rkhunter --check --rwo
+  fi
 fi
