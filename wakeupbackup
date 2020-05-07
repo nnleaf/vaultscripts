@@ -7,7 +7,6 @@
 #//     ////  //     ////
 #
 echo "------------------------------------------------------------------------"
-echo "Adding id_rsa_github key to SSH agent and test github connection"
+echo "Waking up NNBackup"
 echo "------------------------------------------------------------------------"
-ssh-add /home/nn/.ssh/id_rsa_github
-ssh -T git@github.com
+wakeonlan 68:05:ca:0a:70:fc
