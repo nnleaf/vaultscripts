@@ -1,4 +1,10 @@
 #!/bin/bash
+#     ////     //  ////     //
+#    // //    //  // //    //
+#   //  //   //  //  //   //
+#  //   //  //  //   //  //
+# //    // //  //    // //
+#//     ////  //     ////
 # 20181117
 # First script for updating Vault VM
 # 20200515 - Refreshed look, added Debian Versioning
