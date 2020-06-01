@@ -1,0 +1,11 @@
+#!/bin/bash
+#     ////     //  ////     //
+#    // //    //  // //    //
+#   //  //   //  //  //   //
+#  //   //  //  //   //  //
+# //    // //  //    // //
+#//     ////  //     ////
+#
+#20200601 - Created script to backup PFSense configuration file
+#
+scp nn@192.168.1.1:/cf/conf/config.xml /n1/Files/NNServer/PFSense_192.168.1.1/Configuration/config-PFSense.localdomain-"`date +%Y%m%d%H%M%S`".xml
